@@ -61,6 +61,7 @@ if [[ $? -eq 0 || $? -eq 1 ]]; then
     fi
 else
     echo "UNKNOWN - $count"
+    exit 3
 fi
 
 
