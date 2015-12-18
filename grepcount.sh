@@ -63,15 +63,16 @@ fi
 # declare -f GREPCMD
 count=$(GREPCMD);
 
+TAIL=$( [[ $TAIL -gt 0 ]] && echo "last $TAIL lines of" )
 if [[ $? -eq 0 || $? -eq 1 ]]; then
     if [[ $count -gt $CRITICAL || $count -eq $CRITICAL ]]; then
-        echo "CRTICAL - $count of '$SEARCH' found in $FILE"
+        echo "CRTICAL - $count of '$SEARCH' found in $TAIL $FILE"
         exit 2
     elif [[ $count -gt $WARNING || $count -eq $WARNING ]]; then
-        echo "WARNING - $count of '$SEARCH' found in $FILE"
+        echo "WARNING - $count of '$SEARCH' found in $TAIL $FILE"
         exit 1
     else
-        echo "OK - $count of '$SEARCH' found in $FILE"
+        echo "OK - $count of '$SEARCH' found in $TAIL $FILE"
         exit 0
     fi
 else
