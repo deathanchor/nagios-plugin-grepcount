@@ -63,8 +63,8 @@ fi
 # declare -f GREPCMD
 count=$(GREPCMD);
 
-TAIL=$( [[ $TAIL -gt 0 ]] && echo "last $TAIL lines of" )
 if [[ $? -eq 0 || $? -eq 1 ]]; then
+    TAIL=$( [[ $TAIL -gt 0 ]] && echo "last $TAIL lines of" )
     if [[ $count -gt $CRITICAL || $count -eq $CRITICAL ]]; then
         echo "CRTICAL - $count of '$SEARCH' found in $TAIL $FILE"
         exit 2
